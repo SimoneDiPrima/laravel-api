@@ -2,8 +2,11 @@
 
 <div class="content">
     <div class="title m-b-md">
-        <h3>THE WORLD AROUND YOU</h3>
-        <h5>...COMING SOON..</h5>
+        <h3 class="text-center mt-4">La lista dei miei Post</h3>
+        <main class="container">
+            
+        </main>
+       
     </div>
 </div>
 
@@ -15,6 +18,21 @@
 <script>
     export default{
         name:'App',
+        data(){
+            return {
+                posts: [], 
+            } 
+        },
+        methods:{
+            fetchPosts(){
+                axios.get('http://127.0.0.1:8000/api/posts').then((res)=>{
+                    this.posts = res.data;
+                })
+            }
+        },
+        mounted(){
+            this.fetchPosts();
+        }
     };
 
 

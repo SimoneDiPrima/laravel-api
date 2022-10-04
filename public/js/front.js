@@ -1909,7 +1909,24 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'App'
+  name: 'App',
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  methods: {
+    fetchPosts: function fetchPosts() {
+      var _this = this;
+
+      axios.get('http://127.0.0.1:8000/api/posts').then(function (res) {
+        _this.posts = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.fetchPosts();
+  }
 });
 
 /***/ }),
@@ -1940,7 +1957,11 @@ var staticRenderFns = [function () {
     staticClass: "content"
   }, [_c("div", {
     staticClass: "title m-b-md"
-  }, [_c("h3", [_vm._v("THE WORLD AROUND YOU")]), _vm._v(" "), _c("h5", [_vm._v("...COMING SOON..")])])]);
+  }, [_c("h3", {
+    staticClass: "text-center mt-4"
+  }, [_vm._v("La lista dei miei Post")]), _vm._v(" "), _c("main", {
+    staticClass: "container"
+  })])]);
 }];
 render._withStripped = true;
 
