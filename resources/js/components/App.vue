@@ -4,7 +4,13 @@
     <div class="title m-b-md">
         <h3 class="text-center mt-4">La lista dei miei Post</h3>
         <main class="container">
-            
+            <ul class="offset-3 col-6">
+                <div v-for="post in posts" class="my-5" key="post.id">
+                    <li>{{post.title}}</li>
+                    <li>{{post.content}}</li>
+                </div>
+               
+            </ul>
         </main>
        
     </div>

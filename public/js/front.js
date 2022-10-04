@@ -1946,13 +1946,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
     staticClass: "content"
   }, [_c("div", {
@@ -1961,8 +1954,17 @@ var staticRenderFns = [function () {
     staticClass: "text-center mt-4"
   }, [_vm._v("La lista dei miei Post")]), _vm._v(" "), _c("main", {
     staticClass: "container"
-  })])]);
-}];
+  }, [_c("ul", {
+    staticClass: "offset-3 col-6"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("div", {
+      key: "post.id",
+      staticClass: "my-5"
+    }, [_c("li", [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(post.content))])]);
+  }), 0)])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 
