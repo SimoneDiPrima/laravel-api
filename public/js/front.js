@@ -1915,25 +1915,20 @@ __webpack_require__.r(__webpack_exports__);
       posts: []
     };
   },
-  props: {
-    post: Object
-  },
-  computed: {
-    pubblicata: function pubblicata() {
-      var postDate = new Date(this.post.created_at);
-      var day = postDate.getDate();
-      var month = postDate.getMonth();
-      var year = postDate.getFullYear();
-      return "".concat(day, "/").concat(month, "/").concat(year);
-    }
-  },
   methods: {
     fetchPosts: function fetchPosts() {
       var _this = this;
 
       axios.get("http://127.0.0.1:8000/api/posts").then(function (res) {
-        _this.posts = res.data.data;
+        _this.posts = res.data;
       });
+    },
+    pubblicata: function pubblicata(post) {
+      var postDate = new Date(post.created_at);
+      var day = postDate.getDate();
+      var month = postDate.getMonth() + 1;
+      var year = postDate.getFullYear();
+      return "".concat(day, "/").concat(month, "/").concat(year);
     }
   },
   mounted: function mounted() {
@@ -1987,7 +1982,7 @@ var render = function render() {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(post.content))]), _vm._v(" "), _c("h6", [_vm._v(_vm._s(_vm.pubblicata))]), _vm._v(" "), _c("a", {
+    }, [_vm._v(_vm._s(post.content))]), _vm._v(" "), _c("h6", [_vm._v(_vm._s(_vm.pubblicata(post)))]), _vm._v(" "), _c("a", {
       staticClass: "offset-2 col-8 btn btn-primary mb-3",
       attrs: {
         href: "#"
