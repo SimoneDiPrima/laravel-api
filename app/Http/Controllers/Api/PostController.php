@@ -38,8 +38,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        return response()->json($post);
+        $post = Post::with(['category','tags','author'])->find($id);
+        if(!$post) return response()->json('non è stato trovato nessun post',404);
+        else return response()->json($post);
     }
 
     /**

@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts' , 'Api\PostController@index');
-Route::get('/posts/{id}' , 'Api\PostController@show');
+Route::namespace('Api')->group(function(){
+    Route::get('/posts' , 'PostController@index');
+    Route::get('/posts/{id}' , 'PostController@show');
+});
