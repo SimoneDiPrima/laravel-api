@@ -4,7 +4,7 @@
     <div class="title m-b-md">
         <h3 class="text-center mt-4">La lista dei miei Post</h3>
         <main class="container">
-              <PostList />
+              <HomePage />
         </main>
        
     </div>
@@ -16,10 +16,11 @@
 
 
 <script>
-import PostList from "../pages/PostList.vue";
+// import PostList from "../pages/PostList.vue";
+import HomePage from "../pages/HomePage.vue";
     export default{
     name: "App",
-    components: { PostList }
+    components: {  HomePage }
 };
 
 
